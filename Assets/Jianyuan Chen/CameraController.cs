@@ -26,4 +26,5 @@ public class CameraController : MonoBehaviour
             currentVelocity: ref velocity,
             smoothTime: smoothSpeed);
     }
+
 }

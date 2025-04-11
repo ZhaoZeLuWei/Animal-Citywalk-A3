@@ -26,4 +26,12 @@ public class PlayerController : MonoBehaviour
         Vector3 targetVelocity = new Vector3(input.x, 0, input.y) * speed;
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.gameObject.SetActive(false);
+        }
+
+    }
 }
