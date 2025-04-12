@@ -1,3 +1,0 @@
-the player prefab is allready to go 
-use wasd to move and use thee mouse to look around 
-press Escape to pause 
