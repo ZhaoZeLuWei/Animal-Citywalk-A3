@@ -11,7 +11,7 @@ public class ButtonSound : MonoBehaviour
         button.onClick.AddListener(OnButtonClick);
     }
 
-    void OnButtonClick()
+    public void OnButtonClick() 
     {
         if (audioSource != null)
         {
@@ -19,6 +19,7 @@ public class ButtonSound : MonoBehaviour
         }
     }
 }
+
 
 
 
