@@ -31,9 +31,16 @@ public class MovePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // ʹ���ٶȿ���+����ƽ��
         Vector3 targetVelocity = new Vector3(input.y, 0, -input.x) * speed;
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
+
+                // 立即旋转
+        if (targetVelocity.magnitude > 0.1f)
+        {
+            float targetRotation = Mathf.Atan2(targetVelocity.x, targetVelocity.z) * Mathf.Rad2Deg;
+            rb.rotation = Quaternion.Euler(0, targetRotation, 0);
+        }
+
     }
     void OnTriggerEnter(Collider other)
     {
