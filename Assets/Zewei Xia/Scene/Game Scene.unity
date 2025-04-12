@@ -7221,6 +7221,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: coin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2693922465565183068, guid: cffdbcb4386e65641af1577472586e98, type: 3}
+      propertyPath: x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693922465565183068, guid: cffdbcb4386e65641af1577472586e98, type: 3}
+      propertyPath: y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693922465565183068, guid: cffdbcb4386e65641af1577472586e98, type: 3}
+      propertyPath: z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffdbcb4386e65641af1577472586e98, type: 3}
 --- !u!4 &2078316035 stripped

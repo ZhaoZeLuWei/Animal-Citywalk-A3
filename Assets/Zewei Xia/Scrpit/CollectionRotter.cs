@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CollectionRotter : MonoBehaviour
 {
+    // private but access to unity?
+    [SerializeField] float x;
+    [SerializeField] float y;
+    [SerializeField] float z;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(new Vector3(x,y,z) * Time.deltaTime); 
     }
 }
