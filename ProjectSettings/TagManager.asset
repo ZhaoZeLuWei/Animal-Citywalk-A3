@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GameController
   - coin
-  - car
   layers:
   - Default
   - TransparentFX

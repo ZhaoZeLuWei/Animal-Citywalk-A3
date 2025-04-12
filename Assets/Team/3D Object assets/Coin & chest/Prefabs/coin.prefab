@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 122083309298338438}
   - component: {fileID: 656386021}
   - component: {fileID: 656386022}
-  - component: {fileID: 2693922465565183068}
+  - component: {fileID: 656386020}
+  - component: {fileID: 8601521664135724483}
   m_Layer: 8
   m_Name: coin
   m_TagString: coin
@@ -29,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923395959712443219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0015595, y: 0, z: 0}
+  m_LocalScale: {x: 1.5745, y: 1.5745, z: 1.5745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,13 +111,13 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923395959712443219}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5597002278806442958, guid: 2a72f5768dd02c14a95b0efab9534e24, type: 3}
---- !u!114 &2693922465565183068
+--- !u!114 &656386020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,9 +126,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1923395959712443219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1651e7e340a2b4236a88fa631426919f, type: 3}
+  m_Script: {fileID: 11500000, guid: 62d71c0b6ea84ff489afd1509fd24948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 10
-  z: 0
+--- !u!65 &8601521664135724483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923395959712443219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4914196, y: 0.4941265, z: 0.1325659}
+  m_Center: {x: 0.0027143285, y: 0, z: 0}
