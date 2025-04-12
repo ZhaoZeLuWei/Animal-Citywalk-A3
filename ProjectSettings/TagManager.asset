@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameController
   - coin
+  - car
   layers:
   - Default
   - TransparentFX

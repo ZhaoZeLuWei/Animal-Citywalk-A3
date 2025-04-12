@@ -9,7 +9,9 @@ public class MovePlayer : MonoBehaviour
     private Vector2 input;
     public float speed = 8.0f;
     public TextMeshProUGUI score;
+    public  TextMeshProUGUI life;
     private int scoreNumber;
+    private int lifeNumber;
 
     void Start()
     {
@@ -17,6 +19,8 @@ public class MovePlayer : MonoBehaviour
         rb.freezeRotation = true; // ����������ת
         scoreNumber = 0;
         score.text = scoreNumber.ToString();
+        lifeNumber = 3;
+        life.text = lifeNumber.ToString();
     }
 
     void OnMove(InputValue value)
@@ -38,6 +42,11 @@ public class MovePlayer : MonoBehaviour
             other.gameObject.SetActive(false);
             scoreNumber += 1;
             score.text = scoreNumber.ToString();
+        }
+        if (other.gameObject.CompareTag("car"))
+        {
+            lifeNumber -= 1;
+            life.text = lifeNumber.ToString();
         }
 
     }
