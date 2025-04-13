@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class EmoPlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector2 input;
@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true; // ¶³½áÎïÀíÐý×ª
+        rb.freezeRotation = true; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
     }
 
     void OnMove(InputValue value)
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Ê¹ÓÃËÙ¶È¿ØÖÆ+ÊäÈëÆ½»¬
+        // Ê¹ï¿½ï¿½ï¿½Ù¶È¿ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
         Vector3 targetVelocity = new Vector3(input.x, 0, input.y) * speed;
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
     }
