@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Team/Scene/Menu.unity
     guid: ec85217a28b4040d6bb0e280969dbfb0
+  - enabled: 1
+    path: Assets/Jianyuan Chen/Train station.unity
+    guid: a3e9f868ae878be45abf3f628e074a26
+  - enabled: 1
+    path: Assets/Xiaohan Li/XiaohanLiSences.unity
+    guid: 418c1ae5790168648b5e459f070ed88a
+  - enabled: 1
+    path: Assets/Zewei Xia/Scene/Game Scene.unity
+    guid: c683f552a4ff14164be1b4086f74e927
+  - enabled: 1
+    path: Assets/Yimo Hao/Sence/emo.unity
+    guid: ffb7cbb96c5fe4f78809d3631ca63bf4
   m_configObjects: {}
