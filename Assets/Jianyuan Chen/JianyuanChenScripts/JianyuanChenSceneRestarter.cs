@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneRestarter : MonoBehaviour
+public class JianyuanChenSceneRestarter : MonoBehaviour
 {
     // 绑定到Again按钮的点击事件
     public void RestartScene()

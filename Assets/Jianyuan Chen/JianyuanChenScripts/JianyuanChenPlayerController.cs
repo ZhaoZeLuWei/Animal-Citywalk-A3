@@ -17,11 +17,12 @@ public class JianyuanChenPlayerController : MonoBehaviour
     public GameObject losePanel; // 在Inspector中拖入死亡面板
     public GameObject gameInfoPanel; // 游戏信息面板（在Inspector中拖入）
     public TextMeshProUGUI[] countTexts; // 使用数组存储多个文本组件
+    public GameObject winPanel;  // 在Inspector中拖入胜利面板
 
 
     [Header("Health Settings")]
     public int maxHealth = 3;
-    public TextMeshProUGUI healthText; // 新增血量显示文本
+    public TextMeshProUGUI[] healthTexts; // 新增血量显示文本
     private int health;
 
 
@@ -53,6 +54,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
                          // 确保初始状态正确
         if (losePanel != null) losePanel.SetActive(false);
         if (gameInfoPanel != null) gameInfoPanel.SetActive(true);
+        if (winPanel != null) winPanel.SetActive(false);
     }
 
     void OnMove(InputValue value)
@@ -80,7 +82,11 @@ public class JianyuanChenPlayerController : MonoBehaviour
 
     void SetHealthText()
     {
-        healthText.text = ": " + health.ToString();
+        foreach (var text in healthTexts)
+        {
+            if (text != null)
+                text.text = $": {health}"; // 统一格式
+        }
     }
 
     private void FixedUpdate()
@@ -113,6 +119,33 @@ public class JianyuanChenPlayerController : MonoBehaviour
             TakeDamage(1);
             other.gameObject.SetActive(false); // 可选：使停止标志消失
         }
+        else if (other.CompareTag("Win")) // 新增胜利条件判断
+        {
+            Victory();
+        }
+    }
+    void Victory()
+    {
+        Debug.Log("Victory!");
+
+        // 隐藏游戏信息界面
+        if (gameInfoPanel != null)
+        {
+            gameInfoPanel.SetActive(false);
+        }
+
+        // 显示胜利面板
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+        }
+
+        // 暂停游戏
+        Time.timeScale = 0;
+
+        // 禁用玩家输入
+        GetComponent<PlayerInput>().enabled = false;
+
     }
 
     void TakeDamage(int damage)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScenePauseController : MonoBehaviour
+public class JianyuanChenScenePauseController : MonoBehaviour
 {
     // ÔÝÍ£³¡¾°£¨°ó¶¨µ½ÔÝÍ£°´Å¥£©
     public void PauseEntireScene()
