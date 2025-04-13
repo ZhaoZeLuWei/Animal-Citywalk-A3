@@ -1,15 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;//
+using UnityEngine.SceneManagement; // 新增的命名空间引用
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class JianyuanChenPlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector2 input;
     private int count;
     private bool isGrounded;//1
 
+
+
+    [Header("Health Settings")]
+    public int maxHealth = 3;
+    public TextMeshProUGUI healthText; // 新增血量显示文本
+    private int health;
 
 
     [Header("Movement Settings")]
@@ -35,6 +42,8 @@ public class PlayerController : MonoBehaviour
         initialGravity = Physics.gravity.y; // 保存初始重力值
         count = 0;
         SetCountText();//
+        health = maxHealth;
+        SetHealthText(); // 初始化血量显示
     }
 
     void OnMove(InputValue value)
@@ -54,6 +63,11 @@ public class PlayerController : MonoBehaviour
     void SetCountText()//
     {
         countText.text = ": " + count.ToString();//
+    }
+
+    void SetHealthText()
+    {
+        healthText.text = ": " + health.ToString();
     }
 
     private void FixedUpdate()
@@ -78,9 +92,33 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("coin"))
         {
             other.gameObject.SetActive(false);
-            count = count + 1;//
-            SetCountText();//
+            count = count + 1;
+            SetCountText();
         }
-
+        else if (other.gameObject.CompareTag("StopSign")) // 新增扣血判断
+        {
+            TakeDamage(1);
+            other.gameObject.SetActive(false); // 可选：使停止标志消失
+        }
     }
+
+    void TakeDamage(int damage)
+    {
+        health = Mathf.Max(health - damage, 0);
+        SetHealthText();
+
+        if (health <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+
+        Debug.Log("Game Over!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 重新加载当前场景
+    }
+
+
 }
