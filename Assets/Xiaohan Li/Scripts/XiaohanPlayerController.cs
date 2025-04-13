@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class XiaohanPlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private float movementX;
