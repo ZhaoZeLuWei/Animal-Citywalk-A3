@@ -12,6 +12,12 @@ public class JianyuanChenPlayerController : MonoBehaviour
     private bool isGrounded;//1
 
 
+    // 新增死亡面板引用
+    [Header("UI Settings")]
+    public GameObject losePanel; // 在Inspector中拖入死亡面板
+    public GameObject gameInfoPanel; // 游戏信息面板（在Inspector中拖入）
+    public TextMeshProUGUI[] countTexts; // 使用数组存储多个文本组件
+
 
     [Header("Health Settings")]
     public int maxHealth = 3;
@@ -31,7 +37,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public Vector3 groundCheckOffset = new Vector3(0, -0.5f, 0);
 
-    public TextMeshProUGUI countText;
+
 
     private float initialGravity; // 记录初始重力值
 
@@ -44,6 +50,9 @@ public class JianyuanChenPlayerController : MonoBehaviour
         SetCountText();//
         health = maxHealth;
         SetHealthText(); // 初始化血量显示
+                         // 确保初始状态正确
+        if (losePanel != null) losePanel.SetActive(false);
+        if (gameInfoPanel != null) gameInfoPanel.SetActive(true);
     }
 
     void OnMove(InputValue value)
@@ -62,7 +71,11 @@ public class JianyuanChenPlayerController : MonoBehaviour
     }
     void SetCountText()//
     {
-        countText.text = ": " + count.ToString();//
+        foreach (var text in countTexts)
+        {
+            if (text != null)
+                text.text = $": {count}"; // 统一格式
+        }
     }
 
     void SetHealthText()
@@ -117,8 +130,23 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
 
         Debug.Log("Game Over!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 重新加载当前场景
+          if(gameInfoPanel != null)
+        {
+            gameInfoPanel.SetActive(false);
+        }
+        if (losePanel != null)
+        {
+            losePanel.SetActive(true);
+        }
+
+        // 暂停游戏
+        Time.timeScale = 0;
+
+        // 禁用玩家输入
+        GetComponent<PlayerInput>().enabled = false;
+
+   
     }
-
-
 }
+
+
