@@ -300,7 +300,7 @@ RectTransform:
   - {fileID: 841773288}
   - {fileID: 167951565}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1852,7 +1852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.200012, y: -7.399994}
+  m_AnchoredPosition: {x: -7.200012, y: -7.4000244}
   m_SizeDelta: {x: 0, y: 627.94604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167951566
@@ -3066,7 +3066,7 @@ Transform:
   - {fileID: 1269733169}
   - {fileID: 1052666408}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254968353 stripped
 GameObject:
@@ -3587,6 +3587,7 @@ GameObject:
   - component: {fileID: 290099085}
   - component: {fileID: 290099084}
   - component: {fileID: 290099083}
+  - component: {fileID: 290099086}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3659,9 +3660,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 290099086}
+        m_TargetAssemblyTypeName: JianyuanChenSceneLoader, Assembly-CSharp
+        m_MethodName: LoadMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3709,6 +3710,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290099081}
   m_CullTransparentMesh: 1
+--- !u!114 &290099086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290099081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e538075f1680042a07e78684806773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &290503107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7330362534831811231, guid: 48f6791245c9b4d3ca886e55bd0bc63d, type: 3}
@@ -4529,7 +4542,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &352887229 stripped
 Transform:
@@ -4608,7 +4621,7 @@ Transform:
   - {fileID: 865499591}
   - {fileID: 1363606614}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &368179362
 GameObject:
@@ -4702,7 +4715,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &370994567 stripped
 Transform:
@@ -6061,6 +6074,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4770770195246864268, guid: 31ec228187ddd4313a8c9b564df8200a, type: 3}
   m_PrefabInstance: {fileID: 1412238302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &488764439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488764440}
+  m_Layer: 0
+  m_Name: CameraPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &488764440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488764439}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.11256386, y: -1.3797997, z: 2.212588}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1515669927}
+  m_Father: {fileID: 1332338713}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &491924681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8789870613390250131, guid: db25966dea359426691f69d2fbe2ee14, type: 3}
@@ -6732,6 +6777,7 @@ GameObject:
   - component: {fileID: 569252382}
   - component: {fileID: 569252381}
   - component: {fileID: 569252380}
+  - component: {fileID: 569252383}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -6804,9 +6850,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 569252383}
+        m_TargetAssemblyTypeName: JianyuanChenSceneLoader, Assembly-CSharp
+        m_MethodName: LoadSecondScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6854,6 +6900,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569252378}
   m_CullTransparentMesh: 1
+--- !u!114 &569252383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569252378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e538075f1680042a07e78684806773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &578276117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2885750020236311083, guid: 485bf00f23d654f45b450e5f21bca2ec, type: 3}
@@ -7251,7 +7309,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &630361314
 PrefabInstance:
@@ -7709,7 +7767,7 @@ Transform:
   - {fileID: 1301572549}
   - {fileID: 1599231609}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &717896510
 PrefabInstance:
@@ -9586,7 +9644,7 @@ Transform:
   - {fileID: 591330151}
   - {fileID: 1404310185}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &885059119
 GameObject:
@@ -9794,7 +9852,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh62720
+  m_Name: pb_Mesh25068
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10802,7 +10860,7 @@ Transform:
   - {fileID: 355594295}
   - {fileID: 856875639}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003309879
 GameObject:
@@ -11046,7 +11104,7 @@ Transform:
   - {fileID: 1728270555}
   - {fileID: 2095156513}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1044465392
 PrefabInstance:
@@ -11238,7 +11296,7 @@ Transform:
   - {fileID: 668850043}
   - {fileID: 2001387577}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1052666402
 GameObject:
@@ -13371,7 +13429,7 @@ Transform:
   - {fileID: 332993935}
   - {fileID: 2128027241}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164171877
 GameObject:
@@ -16753,7 +16811,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1387389360
 PrefabInstance:
@@ -17149,6 +17207,7 @@ GameObject:
   - component: {fileID: 1411293485}
   - component: {fileID: 1411293484}
   - component: {fileID: 1411293483}
+  - component: {fileID: 1411293486}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -17222,9 +17281,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 1411293486}
+        m_TargetAssemblyTypeName: JianyuanChenSceneLoader, Assembly-CSharp
+        m_MethodName: LoadMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17284,6 +17343,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411293481}
   m_CullTransparentMesh: 1
+--- !u!114 &1411293486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411293481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e538075f1680042a07e78684806773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1412238302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17884,7 +17955,7 @@ Transform:
   - {fileID: 885452261}
   - {fileID: 529897678}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1482013396
 PrefabInstance:
@@ -18135,11 +18206,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515669924}
   m_LocalRotation: {x: 0.07348948, y: 0.01209906, z: -0.024793789, w: 0.9969143}
-  m_LocalPosition: {x: -12.36, y: 1.76, z: -38.57}
+  m_LocalPosition: {x: 0.29912853, y: 4.5495996, z: -7.6301746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 488764440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 8.46, y: 1.186, z: -2.762}
 --- !u!114 &1515669928
@@ -23100,7 +23171,7 @@ Transform:
   m_Children:
   - {fileID: 1332338713}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1881384011
 PrefabInstance:
@@ -25891,6 +25962,7 @@ GameObject:
   - component: {fileID: 2130586454}
   - component: {fileID: 2130586453}
   - component: {fileID: 2130586452}
+  - component: {fileID: 2130586455}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -25963,9 +26035,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 2130586455}
+        m_TargetAssemblyTypeName: JianyuanChenSceneLoader, Assembly-CSharp
+        m_MethodName: LoadMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26013,6 +26085,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130586450}
   m_CullTransparentMesh: 1
+--- !u!114 &2130586455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130586450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e538075f1680042a07e78684806773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2135218398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295513610703122921, guid: cffdbcb4386e65641af1577472586e98, type: 3}

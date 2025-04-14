@@ -163,7 +163,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
 
         Debug.Log("Game Over!");
-          if(gameInfoPanel != null)
+        if (gameInfoPanel != null)
         {
             gameInfoPanel.SetActive(false);
         }
@@ -178,8 +178,6 @@ public class JianyuanChenPlayerController : MonoBehaviour
         // Ω˚”√ÕÊº“ ‰»Î
         GetComponent<PlayerInput>().enabled = false;
 
-   
+
     }
 }
-
-
