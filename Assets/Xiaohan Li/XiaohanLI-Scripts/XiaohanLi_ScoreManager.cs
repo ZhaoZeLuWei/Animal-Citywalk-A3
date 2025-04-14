@@ -6,9 +6,9 @@ public class XiaohanLi_ScoreManager : MonoBehaviour
     public static XiaohanLi_ScoreManager Instance;
 
     public int score = 0;
-    public TMP_Text scoreText1; // 第一个面板的文本
-    public TMP_Text scoreText2; // 第二个面板的文本
-    public TMP_Text scoreText3; // 第三个面板的文本
+    public TMP_Text scoreText1; 
+    public TMP_Text scoreText2; 
+    public TMP_Text scoreText3; 
 
     private void Awake()
     {
@@ -35,10 +35,8 @@ public class XiaohanLi_ScoreManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        // 将分数转换为字符串
         string scoreString = score.ToString();
 
-        // 更新所有三个面板的分数文本
         if (scoreText1 != null)
         {
             scoreText1.text = scoreString;
