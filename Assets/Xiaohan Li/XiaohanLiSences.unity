@@ -20243,7 +20243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8b76d7e374c2ec243bcdbb7f9938e8b2, type: 3}
       propertyPath: m_TagString
-      value: cion
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b76d7e374c2ec243bcdbb7f9938e8b2, type: 3}
