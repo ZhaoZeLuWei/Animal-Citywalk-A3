@@ -6,7 +6,7 @@ public class JianyuanChenScenePauseController : MonoBehaviour
     public void PauseEntireScene()
     {
         Time.timeScale = 0;
-        AudioListener.pause = true; // ‘›Õ£À˘”–“Ù∆µ
+        //AudioListener.pause = true; // ‘›Õ£À˘”–“Ù∆µ
 
     }
 
@@ -14,7 +14,7 @@ public class JianyuanChenScenePauseController : MonoBehaviour
     public void ResumeEntireScene()
     {
         Time.timeScale = 1;
-        AudioListener.pause = false; // ª÷∏¥“Ù∆µ
+       // AudioListener.pause = false; // ª÷∏¥“Ù∆µ
 
     }
 
