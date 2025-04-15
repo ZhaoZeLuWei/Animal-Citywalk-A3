@@ -14,22 +14,19 @@ public class MovePlayer : MonoBehaviour
     [Header("Camera Settings")]
     public Transform cameraPivot;
     public float mouseSensitivity = 100f;
-    [SerializeField] private float xRotation = 0f; // 添加SerializeField消除警告
+    [SerializeField] private float xRotation = 0f;
     public bool enableMouseLook = true;
     
     [Header("UI Settings")]
-    public TextMeshProUGUI[] scoreTexts;
-    public TextMeshProUGUI[] lifeTexts;
-    //public TextMeshProUGUI score;
-    //public TextMeshProUGUI life;
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI score1;
+    public TextMeshProUGUI score2;
+    public TextMeshProUGUI life;
     private int scoreNumber;
-    private int lifeNumber = 3 ;
-
-    public GameObject losePanel;
-
-    public GameObject scorePanel;
+    private int score1Number;
+    private int score2Number;
+    private int lifeNumber;
     
-
     [Header("Physics Settings")]
     public float gravityStrength = -9.81f;
 
@@ -38,13 +35,14 @@ public class MovePlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         
-        SetscoreText();
-        SetlifeText();
-
         scoreNumber = 0;
-       // score.text = scoreNumber.ToString();
+        score.text = scoreNumber.ToString();
+        score1Number = 0;
+        score1.text = score1Number.ToString();
+        score2Number = 0;
+        score2.text = score1Number.ToString();
         lifeNumber = 3;
-        //life.text = lifeNumber.ToString();
+        life.text = lifeNumber.ToString();
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -71,23 +69,6 @@ public class MovePlayer : MonoBehaviour
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             ToggleMouseControl();
-        }
-    }
-
-    void SetscoreText(){
-        foreach (var text in scoreTexts)
-        {
-            if (text != null)
-                text.text = $" {scoreNumber}"; // 统一格式
-        }
-    }   
-
-    void SetlifeText(){
-
-    foreach (var text in lifeTexts)
-        {
-            if (text != null)
-                text.text = $" {lifeNumber}"; // 统一格式
         }
     }
 
@@ -118,15 +99,25 @@ public class MovePlayer : MonoBehaviour
 
     void HandleMovement()
     {
-        Vector3 moveDirection = (cameraPivot.forward * input.y + cameraPivot.right * input.x).normalized;
-        moveDirection.y = 0;
-        
-        Vector3 targetVelocity = moveDirection * speed;
-        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
+        // 获取相机方向（忽略Y轴）
+        Vector3 forward = cameraPivot.forward;
+        Vector3 right = cameraPivot.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
 
-        if (targetVelocity.magnitude > 0.1f)
+        // 计算移动方向
+        Vector3 moveDirection = forward * input.y + right * input.x;
+        
+        // 移动
+        Vector3 targetVelocity = moveDirection * speed;
+        rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
+
+        // 只在有输入且不是向后移动时旋转角色
+        if (moveDirection.magnitude > 0.1f && input.y >= 0)
         {
-            float targetRotation = Mathf.Atan2(targetVelocity.x, targetVelocity.z) * Mathf.Rad2Deg;
+            float targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
             Quaternion targetQuat = Quaternion.Euler(0, targetRotation, 0);
             rb.rotation = Quaternion.Slerp(rb.rotation, targetQuat, rotationSpeed * Time.fixedDeltaTime);
         }
@@ -142,23 +133,17 @@ public class MovePlayer : MonoBehaviour
         if (other.gameObject.CompareTag("coin"))
         {
             other.gameObject.SetActive(false);
-            
             scoreNumber += 1;
-            //score.text = scoreNumber.ToString();
-            SetscoreText();
-
+            score.text = scoreNumber.ToString();
+            score1Number += 1;
+            score1.text = score1Number.ToString();
+            score2Number += 1;
+            score2.text = score2Number.ToString();
         }
         if (other.gameObject.CompareTag("car"))
         {
-            
             lifeNumber -= 1;
-            //life.text = lifeNumber.ToString();
-            SetlifeText();
+            life.text = lifeNumber.ToString();
         }
-         if (this.lifeNumber == 0) {
-            Time.timeScale = 0;
-            losePanel.SetActive(true);
-            scorePanel.SetActive(false);
-         }
     }
 }

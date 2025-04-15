@@ -1999,6 +1999,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 309706896}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1338387086}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2026,18 +2038,6 @@ MonoBehaviour:
       - m_Target: {fileID: 827414269}
         m_TargetAssemblyTypeName: ZeweiPause, Assembly-CSharp
         m_MethodName: PauseEntireScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 309706896}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6197,6 +6197,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746479619}
   m_CullTransparentMesh: 1
+--- !u!1 &753982561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7192485885029148979, guid: 9cd6750d9c5a1544db209f973b5a9229, type: 3}
+  m_PrefabInstance: {fileID: 224878399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &753982565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753982561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10beda144561c405ab094b5746759a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &754869368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7773,6 +7790,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.938292, y: 1.3522176, z: 3.940787}
   m_Center: {x: 0, y: 0.6761088, z: 0.024583936}
+--- !u!114 &973318802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973318794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10beda144561c405ab094b5746759a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &997308035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8761,6 +8790,55 @@ Transform:
   m_Father: {fileID: 1167109130}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1153050581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153050583}
+  - component: {fileID: 1153050582}
+  m_Layer: 0
+  m_Name: HealthShow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1153050582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153050581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4574a42489f46e899a14685b8aff47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  healthText: {fileID: 1671028262}
+  otherPanelHealthText: {fileID: 424259072}
+  currentPanel: {fileID: 1338387086}
+  gameOverPanel: {fileID: 1030115381}
+--- !u!4 &1153050583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153050581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -37.732635, y: 1.8447738, z: 2.3588524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1156267283
 GameObject:
   m_ObjectHideFlags: 0
@@ -8996,18 +9074,13 @@ MonoBehaviour:
   speed: 6
   rotationSpeed: 5
   cameraPivot: {fileID: 1138612122}
-  mouseSensitivity: 100
+  mouseSensitivity: 10
   xRotation: 0
   enableMouseLook: 0
-  scoreTexts:
-  - {fileID: 610495520}
-  - {fileID: 1044655106}
-  - {fileID: 1301957838}
-  lifeTexts:
-  - {fileID: 1671028262}
-  - {fileID: 424259072}
-  losePanel: {fileID: 1030115381}
-  scorePanel: {fileID: 1338387086}
+  score: {fileID: 610495520}
+  score1: {fileID: 1301957838}
+  score2: {fileID: 1044655106}
+  life: {fileID: 1671028262}
   gravityStrength: -6.72
 --- !u!65 &1167109127
 BoxCollider:
@@ -13249,6 +13322,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5946023, y: 2.5057693, z: 7.1845}
   m_Center: {x: 0.00025492912, y: 1.2528846, z: 0.038558252}
+--- !u!114 &1694648265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694648257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10beda144561c405ab094b5746759a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1705065209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3997326107397367805, guid: daec182d3f76ce74f82bfd198f01609a, type: 3}
@@ -13267,6 +13352,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5946023, y: 2.5057693, z: 7.1845}
   m_Center: {x: 0.00025683647, y: 1.2528846, z: 0.038556345}
+--- !u!114 &1705065217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705065209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10beda144561c405ab094b5746759a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1718380701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13882,6 +13979,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2560914, y: 2.5815666, z: 7.097672}
   m_Center: {x: 0.000014424324, y: 1.288565, z: -0.18883395}
+--- !u!114 &1794831430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794831422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10beda144561c405ab094b5746759a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1805560130
 GameObject:
   m_ObjectHideFlags: 0
