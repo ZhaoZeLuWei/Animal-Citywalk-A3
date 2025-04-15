@@ -18,11 +18,18 @@ public class MovePlayer : MonoBehaviour
     public bool enableMouseLook = true;
     
     [Header("UI Settings")]
-    public TextMeshProUGUI score;
-    public TextMeshProUGUI life;
+    public TextMeshProUGUI[] scoreTexts;
+    public TextMeshProUGUI[] lifeTexts;
+    //public TextMeshProUGUI score;
+    //public TextMeshProUGUI life;
     private int scoreNumber;
-    private int lifeNumber;
+    private int lifeNumber = 3 ;
+
+    public GameObject losePanel;
+
+    public GameObject scorePanel;
     
+
     [Header("Physics Settings")]
     public float gravityStrength = -9.81f;
 
@@ -31,10 +38,13 @@ public class MovePlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         
+        SetscoreText();
+        SetlifeText();
+
         scoreNumber = 0;
-        score.text = scoreNumber.ToString();
+       // score.text = scoreNumber.ToString();
         lifeNumber = 3;
-        life.text = lifeNumber.ToString();
+        //life.text = lifeNumber.ToString();
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -61,6 +71,23 @@ public class MovePlayer : MonoBehaviour
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             ToggleMouseControl();
+        }
+    }
+
+    void SetscoreText(){
+        foreach (var text in scoreTexts)
+        {
+            if (text != null)
+                text.text = $" {scoreNumber}"; // 统一格式
+        }
+    }   
+
+    void SetlifeText(){
+
+    foreach (var text in lifeTexts)
+        {
+            if (text != null)
+                text.text = $" {lifeNumber}"; // 统一格式
         }
     }
 
@@ -115,13 +142,23 @@ public class MovePlayer : MonoBehaviour
         if (other.gameObject.CompareTag("coin"))
         {
             other.gameObject.SetActive(false);
+            
             scoreNumber += 1;
-            score.text = scoreNumber.ToString();
+            //score.text = scoreNumber.ToString();
+            SetscoreText();
+
         }
         if (other.gameObject.CompareTag("car"))
         {
+            
             lifeNumber -= 1;
-            life.text = lifeNumber.ToString();
+            //life.text = lifeNumber.ToString();
+            SetlifeText();
         }
+         if (this.lifeNumber == 0) {
+            Time.timeScale = 0;
+            losePanel.SetActive(true);
+            scorePanel.SetActive(false);
+         }
     }
 }
