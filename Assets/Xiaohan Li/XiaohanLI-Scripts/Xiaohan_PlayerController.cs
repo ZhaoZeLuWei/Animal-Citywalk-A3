@@ -1,98 +1,127 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Xiaohan_PlayerController : MonoBehaviour
 {
+    [Header("Movement Settings")]
     private Rigidbody rb;
-    public float speed = 5f;
-    private bool canMove = true;
+    private Vector2 input;
+    public float speed = 8.0f;
+    public float rotationSpeed = 10f;
 
-    // 记录初始位置
-    private Vector3 initialPosition;
+    [Header("Camera Settings")]
+    public Transform cameraPivot;
+    public float mouseSensitivity = 100f;
+    [SerializeField] private float xRotation = 0f; // 添加SerializeField消除警告
+    public bool enableMouseLook = true;
 
-    // 分数和血量
-    public int score = 0;
-    public int health = 3;
+    [Header("UI Settings")]
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI life;
+    private int scoreNumber;
+    private int lifeNumber;
 
-    // UI元素
-    public TMP_Text scoreText; // 显示分数的 UI 文本
-    public TMP_Text healthText; // 显示血量的 UI 文本
-
-    // 拾取的物品预设
-    public GameObject[] collectiblePrefabs; // 存储可拾取物品的预设
-    public Transform[] spawnPoints; // 存储物品生成位置
+    [Header("Physics Settings")]
+    public float gravityStrength = -9.81f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.freezeRotation = true;
 
-        // 记录角色的初始位置
-        initialPosition = transform.position;
+        scoreNumber = 0;
+        score.text = scoreNumber.ToString();
+        lifeNumber = 3;
+        life.text = lifeNumber.ToString();
 
-        // 初始化 UI
-        UpdateUI();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
-        // 生成物品
-        SpawnCollectibles();
+        if (cameraPivot == null) cameraPivot = transform;
+    }
+
+    void OnMove(InputValue value)
+    {
+        input = value.Get<Vector2>();
+    }
+
+    void OnLook(InputValue value)
+    {
+        if (enableMouseLook)
+        {
+            Vector2 mouseInput = value.Get<Vector2>();
+            HandleCameraRotation(mouseInput);
+        }
     }
 
     void Update()
     {
-        if (canMove)
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
-            float movementX = Input.GetAxis("Horizontal");
-            float movementY = Input.GetAxis("Vertical");
-
-            Vector3 movement = new Vector3(movementX, 0.0f, movementY) * speed;
-
-            rb.velocity = new Vector3(movement.x, 0, movement.z);
+            ToggleMouseControl();
         }
     }
 
-    public void SetMovement(bool enable)
+    void ToggleMouseControl()
     {
-        canMove = enable;
+        enableMouseLook = !enableMouseLook;
+        Cursor.lockState = enableMouseLook ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !enableMouseLook;
     }
 
-    public void ResetPosition()
+    void HandleCameraRotation(Vector2 mouseInput)
     {
-        // 将角色位置重置为初始位置
-        transform.position = initialPosition;
+        float mouseX = mouseInput.x * mouseSensitivity * Time.deltaTime;
+        float mouseY = mouseInput.y * mouseSensitivity * Time.deltaTime;
 
-        // 重置分数和血量
-        score = 0;
-        health = 3;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        cameraPivot.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
-        // 更新 UI
-        UpdateUI();
-
-        // 重新生成物品
-        SpawnCollectibles();
+        transform.Rotate(Vector3.up * mouseX);
     }
 
-    private void UpdateUI()
+    void FixedUpdate()
     {
-        if (scoreText != null)
-            scoreText.text = "Score: " + score;
-        if (healthText != null)
-            healthText.text = "Health: " + health;
+        HandleMovement();
+        ApplyGravity();
     }
 
-    private void SpawnCollectibles()
+    void HandleMovement()
     {
-        // 清除之前的物品
-        foreach (var collectible in GameObject.FindGameObjectsWithTag("Collectible"))
+        Vector3 moveDirection = (cameraPivot.forward * input.y + cameraPivot.right * input.x).normalized;
+        moveDirection.y = 0;
+
+        Vector3 targetVelocity = moveDirection * speed;
+        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
+
+        if (targetVelocity.magnitude > 0.1f)
         {
-            Destroy(collectible);
+            float targetRotation = Mathf.Atan2(targetVelocity.x, targetVelocity.z) * Mathf.Rad2Deg;
+            Quaternion targetQuat = Quaternion.Euler(0, targetRotation, 0);
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetQuat, rotationSpeed * Time.fixedDeltaTime);
         }
+    }
 
-        // 生成新的物品
-        foreach (var spawnPoint in spawnPoints)
+    void ApplyGravity()
+    {
+        rb.AddForce(new Vector3(0, gravityStrength, 0), ForceMode.Acceleration);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("coin"))
         {
-            int randomIndex = Random.Range(0, collectiblePrefabs.Length);
-            Instantiate(collectiblePrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+            other.gameObject.SetActive(false);
+            scoreNumber += 1;
+            score.text = scoreNumber.ToString();
+        }
+        if (other.gameObject.CompareTag("car"))
+        {
+            lifeNumber -= 1;
+            life.text = lifeNumber.ToString();
         }
     }
 }
