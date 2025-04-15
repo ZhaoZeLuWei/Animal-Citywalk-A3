@@ -27207,12 +27207,14 @@ MonoBehaviour:
   speed: 8
   rotationSpeed: 3
   cameraPivot: {fileID: 559744316}
-  mouseSensitivity: 100
+  mouseSensitivity: 10
   xRotation: 0
   enableMouseLook: 0
   score: {fileID: 1738774882}
+  score1: {fileID: 0}
+  score2: {fileID: 0}
   life: {fileID: 1984997895}
-  gravityStrength: 0
+  gravityStrength: 0.001
 --- !u!1001 &1601596582
 PrefabInstance:
   m_ObjectHideFlags: 0

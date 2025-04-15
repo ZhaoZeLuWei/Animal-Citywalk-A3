@@ -14,13 +14,17 @@ public class Xiaohan_PlayerController : MonoBehaviour
     [Header("Camera Settings")]
     public Transform cameraPivot;
     public float mouseSensitivity = 100f;
-    [SerializeField] private float xRotation = 0f; // 添加SerializeField消除警告
+    [SerializeField] private float xRotation = 0f;
     public bool enableMouseLook = true;
 
     [Header("UI Settings")]
     public TextMeshProUGUI score;
+    public TextMeshProUGUI score1;
+    public TextMeshProUGUI score2;
     public TextMeshProUGUI life;
     private int scoreNumber;
+    private int score1Number;
+    private int score2Number;
     private int lifeNumber;
 
     [Header("Physics Settings")]
@@ -33,6 +37,10 @@ public class Xiaohan_PlayerController : MonoBehaviour
 
         scoreNumber = 0;
         score.text = scoreNumber.ToString();
+        score1Number = -1;
+        score1.text = score1Number.ToString();
+        score2Number = 0;
+        score2.text = score1Number.ToString();
         lifeNumber = 3;
         life.text = lifeNumber.ToString();
 
@@ -91,15 +99,25 @@ public class Xiaohan_PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        Vector3 moveDirection = (cameraPivot.forward * input.y + cameraPivot.right * input.x).normalized;
-        moveDirection.y = 0;
+        // 获取相机方向（忽略Y轴）
+        Vector3 forward = cameraPivot.forward;
+        Vector3 right = cameraPivot.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
 
+        // 计算移动方向
+        Vector3 moveDirection = forward * input.y + right * input.x;
+
+        // 移动
         Vector3 targetVelocity = moveDirection * speed;
-        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
+        rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
 
-        if (targetVelocity.magnitude > 0.1f)
+        // 只在有输入且不是向后移动时旋转角色
+        if (moveDirection.magnitude > 0.1f && input.y >= 0)
         {
-            float targetRotation = Mathf.Atan2(targetVelocity.x, targetVelocity.z) * Mathf.Rad2Deg;
+            float targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
             Quaternion targetQuat = Quaternion.Euler(0, targetRotation, 0);
             rb.rotation = Quaternion.Slerp(rb.rotation, targetQuat, rotationSpeed * Time.fixedDeltaTime);
         }
@@ -117,6 +135,10 @@ public class Xiaohan_PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             scoreNumber += 1;
             score.text = scoreNumber.ToString();
+            score1Number += 1;
+            score1.text = score1Number.ToString();
+            score2Number += 1;
+            score2.text = score2Number.ToString();
         }
         if (other.gameObject.CompareTag("car"))
         {
