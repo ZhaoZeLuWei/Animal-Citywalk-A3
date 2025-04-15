@@ -19,8 +19,12 @@ public class EmoPlayerController : MonoBehaviour
     
     [Header("UI Settings")]
     public TextMeshProUGUI score;
+    public TextMeshProUGUI score1;
+    public TextMeshProUGUI score2;
     public TextMeshProUGUI life;
     private int scoreNumber;
+    private int score1Number;
+    private int score2Number;
     private int lifeNumber;
     
     [Header("Physics Settings")]
@@ -33,6 +37,10 @@ public class EmoPlayerController : MonoBehaviour
         
         scoreNumber = 0;
         score.text = scoreNumber.ToString();
+        score1Number = -1;
+        score1.text = score1Number.ToString();
+        score2Number = 0;
+        score2.text = score1Number.ToString();
         lifeNumber = 3;
         life.text = lifeNumber.ToString();
         
@@ -117,6 +125,18 @@ public class EmoPlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             scoreNumber += 1;
             score.text = scoreNumber.ToString();
+        }
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.gameObject.SetActive(false);
+            score1Number += 1;
+            score1.text = score1Number.ToString();
+        }
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.gameObject.SetActive(false);
+            score2Number += 1;
+            score2.text = score2Number.ToString();
         }
         if (other.gameObject.CompareTag("car"))
         {
