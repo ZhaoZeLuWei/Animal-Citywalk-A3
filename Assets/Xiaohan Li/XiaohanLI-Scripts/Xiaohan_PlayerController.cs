@@ -3,20 +3,20 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
-public class EmoPlayerController : MonoBehaviour
+public class Xiaohan_PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     private Rigidbody rb;
     private Vector2 input;
     public float speed = 8.0f;
     public float rotationSpeed = 10f;
-    
+
     [Header("Camera Settings")]
     public Transform cameraPivot;
     public float mouseSensitivity = 100f;
     [SerializeField] private float xRotation = 0f;
     public bool enableMouseLook = true;
-    
+
     [Header("UI Settings")]
     public TextMeshProUGUI score;
     public TextMeshProUGUI score1;
@@ -26,7 +26,7 @@ public class EmoPlayerController : MonoBehaviour
     private int score1Number;
     private int score2Number;
     private int lifeNumber;
-    
+
     [Header("Physics Settings")]
     public float gravityStrength = -9.81f;
 
@@ -34,7 +34,7 @@ public class EmoPlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        
+
         scoreNumber = 0;
         score.text = scoreNumber.ToString();
         score1Number = -1;
@@ -43,10 +43,10 @@ public class EmoPlayerController : MonoBehaviour
         score2.text = score1Number.ToString();
         lifeNumber = 3;
         life.text = lifeNumber.ToString();
-        
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
+
         if (cameraPivot == null) cameraPivot = transform;
     }
 
@@ -99,7 +99,7 @@ public class EmoPlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        // èŽ·å–ç›¸æœºæ–¹å‘ï¼ˆå¿½ç•¥Yè½´ï¼‰
+        // »ñÈ¡Ïà»ú·½Ïò£¨ºöÂÔYÖá£©
         Vector3 forward = cameraPivot.forward;
         Vector3 right = cameraPivot.right;
         forward.y = 0;
@@ -107,14 +107,14 @@ public class EmoPlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        // è®¡ç®—ç§»åŠ¨æ–¹å‘
+        // ¼ÆËãÒÆ¶¯·½Ïò
         Vector3 moveDirection = forward * input.y + right * input.x;
-        
-        // ç§»åŠ¨
+
+        // ÒÆ¶¯
         Vector3 targetVelocity = moveDirection * speed;
         rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
 
-        // åªåœ¨æœ‰è¾“å…¥ä¸”ä¸æ˜¯å‘åŽç§»åŠ¨æ—¶æ—‹è½¬è§’è‰²
+        // Ö»ÔÚÓÐÊäÈëÇÒ²»ÊÇÏòºóÒÆ¶¯Ê±Ðý×ª½ÇÉ«
         if (moveDirection.magnitude > 0.1f && input.y >= 0)
         {
             float targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
@@ -147,3 +147,12 @@ public class EmoPlayerController : MonoBehaviour
         }
     }
 }
+
+
+
+
+
+
+
+
+
