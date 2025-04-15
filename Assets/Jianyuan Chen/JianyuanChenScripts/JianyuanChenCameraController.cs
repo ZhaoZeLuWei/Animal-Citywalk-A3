@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class JianyuanChenCameraController : MonoBehaviour
 {
     public GameObject player;        // 拖拽指定玩家对象
     public float smoothSpeed = 0.1f; // 平滑移动系数（0-1）
