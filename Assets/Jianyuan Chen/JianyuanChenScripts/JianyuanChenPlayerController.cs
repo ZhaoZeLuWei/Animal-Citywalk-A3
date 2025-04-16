@@ -17,6 +17,9 @@ public class JianyuanChenPlayerController : MonoBehaviour
     public AudioClip coinSound; // Coin 的音效
     public AudioClip stopSignSound; // StopSign 的音效
     private AudioSource audioSource; // AudioSource 组件
+    public AudioSource bgmAudioSource; // 在检查器中拖入 BGM 的 AudioSource
+    public AudioClip winMusic; // 胜利音乐
+    public AudioClip loseMusic; // 失败音乐
 
     // ���������������
     [Header("UI Settings")]
@@ -45,7 +48,6 @@ public class JianyuanChenPlayerController : MonoBehaviour
     public Vector3 groundCheckOffset = new Vector3(0, -0.5f, 0);
 
 
-
     private float initialGravity; // ��¼��ʼ����ֵ
 
     void Start()
@@ -66,6 +68,8 @@ public class JianyuanChenPlayerController : MonoBehaviour
         // 初始化 AudioSource
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false; // 禁止自动播放
+
+
     }
 
     void OnMove(InputValue value)
@@ -148,6 +152,13 @@ public class JianyuanChenPlayerController : MonoBehaviour
     void Victory()
     {
         Debug.Log("Victory!");
+        if (bgmAudioSource != null)    // 停止 BGM，播放胜利音乐
+        {
+            bgmAudioSource.Stop();
+            bgmAudioSource.clip = winMusic;
+            bgmAudioSource.loop = false;
+            bgmAudioSource.Play();
+        }
 
         // ������Ϸ��Ϣ����
         if (gameInfoPanel != null)
@@ -184,6 +195,14 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
 
         Debug.Log("Game Over!");
+        // 停止 BGM，播放失败音乐
+        if (bgmAudioSource != null)
+        {
+            bgmAudioSource.Stop();
+            bgmAudioSource.clip = loseMusic;
+            bgmAudioSource.loop = false;
+            bgmAudioSource.Play();
+        }
         if (gameInfoPanel != null)
         {
             gameInfoPanel.SetActive(false);
