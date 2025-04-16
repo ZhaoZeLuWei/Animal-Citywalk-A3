@@ -30,6 +30,8 @@ public class MovePlayer : MonoBehaviour
     [Header("Physics Settings")]
     public float gravityStrength = -9.81f;
 
+    public AudioSource getCoin;
+
     void Start()
     {
         Time.timeScale = 1;
@@ -133,6 +135,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
+            getCoin.Play();
             other.gameObject.SetActive(false);
             scoreNumber += 1;
             score.text = scoreNumber.ToString();
@@ -140,6 +143,7 @@ public class MovePlayer : MonoBehaviour
             score1.text = score1Number.ToString();
             score2Number += 1;
             score2.text = score2Number.ToString();
+
         }
         if (other.gameObject.CompareTag("car"))
         {
