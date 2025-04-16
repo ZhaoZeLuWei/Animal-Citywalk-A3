@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Yimo Hao/Sence/emo.unity
     guid: ffb7cbb96c5fe4f78809d3631ca63bf4
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9569c10533dff894da57a33a6490aeed, type: 2}

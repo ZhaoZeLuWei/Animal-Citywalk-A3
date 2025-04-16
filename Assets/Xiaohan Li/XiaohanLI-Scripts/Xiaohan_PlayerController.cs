@@ -41,7 +41,7 @@ public class Xiaohan_PlayerController : MonoBehaviour
         score1Number = -1;
         score1.text = score1Number.ToString();
         score2Number = 0;
-        score2.text = score1Number.ToString();
+        score2.text = score2Number.ToString();
         lifeNumber = 3;
         life.text = lifeNumber.ToString();
 
