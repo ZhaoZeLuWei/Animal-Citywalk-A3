@@ -18,6 +18,12 @@ public class AudioManager : MonoBehaviour
     // 静音状态
     private bool isMuted = false;
 
+    // 添加公共属性来暴露isMuted
+    public bool IsMuted
+    {
+        get { return isMuted; }
+    }
+
     // 保存原始BGM的clip
     private AudioClip originalBGM;
 
