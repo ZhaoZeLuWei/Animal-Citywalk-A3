@@ -12,6 +12,12 @@ public class JianyuanChenPlayerController : MonoBehaviour
     private bool isGrounded;//1
 
 
+    // 音效相关变量
+    [Header("Audio Settings")]
+    public AudioClip coinSound; // Coin 的音效
+    public AudioClip stopSignSound; // StopSign 的音效
+    private AudioSource audioSource; // AudioSource 组件
+
     // ���������������
     [Header("UI Settings")]
     public GameObject losePanel; // ��Inspector�������������
@@ -56,6 +62,10 @@ public class JianyuanChenPlayerController : MonoBehaviour
         if (losePanel != null) losePanel.SetActive(false);
         if (gameInfoPanel != null) gameInfoPanel.SetActive(true);
         if (winPanel != null) winPanel.SetActive(false);
+
+        // 初始化 AudioSource
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false; // 禁止自动播放
     }
 
     void OnMove(InputValue value)
@@ -114,11 +124,21 @@ public class JianyuanChenPlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+            // 播放 Coin 音效
+            if (coinSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(coinSound);
+            }
         }
         else if (other.gameObject.CompareTag("StopSign")) // ������Ѫ�ж�
         {
             TakeDamage(1);
             other.gameObject.SetActive(false); // ��ѡ��ʹֹͣ��־��ʧ
+                                               // 播放 StopSign 音效
+            if (stopSignSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(stopSignSound);
+            }
         }
         else if (other.CompareTag("Win")) // ����ʤ�������ж�
         {
