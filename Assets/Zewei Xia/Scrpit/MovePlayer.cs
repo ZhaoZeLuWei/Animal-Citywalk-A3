@@ -32,6 +32,7 @@ public class MovePlayer : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         

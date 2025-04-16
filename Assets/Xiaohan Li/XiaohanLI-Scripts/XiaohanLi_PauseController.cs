@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class XiaohanLi_PauseController : MonoBehaviour
 {
-    // ÔÝÍ£³¡¾°£¨°ó¶¨µ½ÔÝÍ£°´Å¥£©
+    // ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¶¨µï¿½ï¿½ï¿½Í£ï¿½ï¿½Å¥ï¿½ï¿½
     public void PauseEntireScene()
     {
         Time.timeScale = 0;
-        AudioListener.pause = true; // ÔÝÍ£ËùÓÐÒôÆµ
 
     }
 
-    // »Ö¸´³¡¾°£¨°ó¶¨µ½¼ÌÐø°´Å¥£©
+    // ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¶¨µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½
     public void ResumeEntireScene()
     {
         Time.timeScale = 1;
-        AudioListener.pause = false; // »Ö¸´ÒôÆµ
 
     }
 

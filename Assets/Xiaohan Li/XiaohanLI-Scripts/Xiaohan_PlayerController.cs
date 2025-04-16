@@ -32,6 +32,7 @@ public class Xiaohan_PlayerController : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -99,7 +100,7 @@ public class Xiaohan_PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        // »ñÈ¡Ïà»ú·½Ïò£¨ºöÂÔYÖá£©
+        // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò£¨ºï¿½ï¿½ï¿½Yï¿½á£©
         Vector3 forward = cameraPivot.forward;
         Vector3 right = cameraPivot.right;
         forward.y = 0;
@@ -107,14 +108,14 @@ public class Xiaohan_PlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        // ¼ÆËãÒÆ¶¯·½Ïò
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
         Vector3 moveDirection = forward * input.y + right * input.x;
 
-        // ÒÆ¶¯
+        // ï¿½Æ¶ï¿½
         Vector3 targetVelocity = moveDirection * speed;
         rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
 
-        // Ö»ÔÚÓÐÊäÈëÇÒ²»ÊÇÏòºóÒÆ¶¯Ê±Ðý×ª½ÇÉ«
+        // Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ê±ï¿½ï¿½×ªï¿½ï¿½É«
         if (moveDirection.magnitude > 0.1f && input.y >= 0)
         {
             float targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;

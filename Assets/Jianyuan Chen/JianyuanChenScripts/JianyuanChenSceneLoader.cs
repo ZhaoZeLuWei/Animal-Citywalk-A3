@@ -1,17 +1,18 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // ÐèÒªÒýÓÃ³¡¾°¹ÜÀíÃüÃû¿Õ¼ä
+using UnityEngine.SceneManagement; // ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½
 
 public class JianyuanChenSceneLoader : MonoBehaviour
 {
-    // µã»÷°´Å¥Ê±´¥·¢µÄ·½·¨
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Å¥Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
     public void LoadMenuScene()
     {
-        // ¼ÓÔØÃûÎª "Menu" µÄ³¡¾°£¨È·±£³¡¾°Ãû³ÆÓë Build Settings ÖÐÒ»ÖÂ£©
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª "Menu" ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Build Settings ï¿½ï¿½Ò»ï¿½Â£ï¿½
         SceneManager.LoadScene("Menu");
     }
     public void LoadSecondScene()
     {
-        // ¼ÓÔØÃûÎª "Menu" µÄ³¡¾°£¨È·±£³¡¾°Ãû³ÆÓë Build Settings ÖÐÒ»ÖÂ£©
+        Time.timeScale = 1;
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª "Menu" ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Build Settings ï¿½ï¿½Ò»ï¿½Â£ï¿½
         SceneManager.LoadScene("XiaohanLiSences");
     }
 }

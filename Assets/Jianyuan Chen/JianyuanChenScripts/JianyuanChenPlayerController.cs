@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;//
-using UnityEngine.SceneManagement; // ÐÂÔöµÄÃüÃû¿Õ¼äÒýÓÃ
+using UnityEngine.SceneManagement; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
 [RequireComponent(typeof(Rigidbody))]
 public class JianyuanChenPlayerController : MonoBehaviour
@@ -12,24 +12,24 @@ public class JianyuanChenPlayerController : MonoBehaviour
     private bool isGrounded;//1
 
 
-    // ÐÂÔöËÀÍöÃæ°åÒýÓÃ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [Header("UI Settings")]
-    public GameObject losePanel; // ÔÚInspectorÖÐÍÏÈëËÀÍöÃæ°å
-    public GameObject gameInfoPanel; // ÓÎÏ·ÐÅÏ¢Ãæ°å£¨ÔÚInspectorÖÐÍÏÈë£©
-    public TextMeshProUGUI[] countTexts; // Ê¹ÓÃÊý×é´æ´¢¶à¸öÎÄ±¾×é¼þ
-    public GameObject winPanel;  // ÔÚInspectorÖÐÍÏÈëÊ¤ÀûÃæ°å
+    public GameObject losePanel; // ï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public GameObject gameInfoPanel; // ï¿½ï¿½Ï·ï¿½ï¿½Ï¢ï¿½ï¿½å£¨ï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ë£©
+    public TextMeshProUGUI[] countTexts; // Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½
+    public GameObject winPanel;  // ï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
     [Header("Health Settings")]
     public int maxHealth = 3;
-    public TextMeshProUGUI[] healthTexts; // ÐÂÔöÑªÁ¿ÏÔÊ¾ÎÄ±¾
+    public TextMeshProUGUI[] healthTexts; // ï¿½ï¿½ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ï¿½
     private int health;
 
 
     [Header("Movement Settings")]
     public float speed = 5f;
     [Range(5f, 170f)] public float jumpForce = 12f;
-    public float gravityMultiplier = 2f; // ÐÂÔöÖØÁ¦ÔöÇ¿ÏµÊý
+    public float gravityMultiplier = 2f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿Ïµï¿½ï¿½
 
 
 
@@ -40,18 +40,19 @@ public class JianyuanChenPlayerController : MonoBehaviour
 
 
 
-    private float initialGravity; // ¼ÇÂ¼³õÊ¼ÖØÁ¦Öµ
+    private float initialGravity; // ï¿½ï¿½Â¼ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Öµ
 
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true; // ¶³½áÎïÀíÐý×ª¡¢
-        initialGravity = Physics.gravity.y; // ±£´æ³õÊ¼ÖØÁ¦Öµ
+        rb.freezeRotation = true; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
+        initialGravity = Physics.gravity.y; // ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Öµ
         count = 0;
         SetCountText();//
         health = maxHealth;
-        SetHealthText(); // ³õÊ¼»¯ÑªÁ¿ÏÔÊ¾
-                         // È·±£³õÊ¼×´Ì¬ÕýÈ·
+        SetHealthText(); // ï¿½ï¿½Ê¼ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½Ê¾
+                         // È·ï¿½ï¿½ï¿½ï¿½Ê¼×´Ì¬ï¿½ï¿½È·
         if (losePanel != null) losePanel.SetActive(false);
         if (gameInfoPanel != null) gameInfoPanel.SetActive(true);
         if (winPanel != null) winPanel.SetActive(false);
@@ -67,7 +68,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
-            // Ê¹ÓÃËÙ¶ÈÐÞ¸ÄÈ·±£¸ß¶ÈÒ»ÖÂÐÔ
+            // Ê¹ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½Þ¸ï¿½È·ï¿½ï¿½ï¿½ß¶ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
     }
@@ -76,7 +77,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
         foreach (var text in countTexts)
         {
             if (text != null)
-                text.text = $": {count}"; // Í³Ò»¸ñÊ½
+                text.text = $": {count}"; // Í³Ò»ï¿½ï¿½Ê½
         }
     }
 
@@ -85,16 +86,16 @@ public class JianyuanChenPlayerController : MonoBehaviour
         foreach (var text in healthTexts)
         {
             if (text != null)
-                text.text = $": {health}"; // Í³Ò»¸ñÊ½
+                text.text = $": {health}"; // Í³Ò»ï¿½ï¿½Ê½
         }
     }
 
     private void FixedUpdate()
     {
-        // ÔöÇ¿ÖØÁ¦Ð§¹û
+        // ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
         rb.AddForce(Vector3.up * initialGravity * (gravityMultiplier - 1), ForceMode.Acceleration);
 
-        // ¸Ä½øµÄµØÃæ¼ì²â
+        // ï¿½Ä½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
         isGrounded = Physics.CheckSphere(
             transform.position + groundCheckOffset,
             groundCheckRadius,
@@ -102,7 +103,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
         );
 
 
-        // Ê¹ÓÃËÙ¶È¿ØÖÆ+ÊäÈëÆ½»¬
+        // Ê¹ï¿½ï¿½ï¿½Ù¶È¿ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
         Vector3 targetVelocity = new Vector3(input.x, 0, input.y) * speed;
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
     }
@@ -114,12 +115,12 @@ public class JianyuanChenPlayerController : MonoBehaviour
             count = count + 1;
             SetCountText();
         }
-        else if (other.gameObject.CompareTag("StopSign")) // ÐÂÔö¿ÛÑªÅÐ¶Ï
+        else if (other.gameObject.CompareTag("StopSign")) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñªï¿½Ð¶ï¿½
         {
             TakeDamage(1);
-            other.gameObject.SetActive(false); // ¿ÉÑ¡£ºÊ¹Í£Ö¹±êÖ¾ÏûÊ§
+            other.gameObject.SetActive(false); // ï¿½ï¿½Ñ¡ï¿½ï¿½Ê¹Í£Ö¹ï¿½ï¿½Ö¾ï¿½ï¿½Ê§
         }
-        else if (other.CompareTag("Win")) // ÐÂÔöÊ¤ÀûÌõ¼þÅÐ¶Ï
+        else if (other.CompareTag("Win")) // ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
         {
             Victory();
         }
@@ -128,22 +129,22 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
         Debug.Log("Victory!");
 
-        // Òþ²ØÓÎÏ·ÐÅÏ¢½çÃæ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
         if (gameInfoPanel != null)
         {
             gameInfoPanel.SetActive(false);
         }
 
-        // ÏÔÊ¾Ê¤ÀûÃæ°å
+        // ï¿½ï¿½Ê¾Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½
         if (winPanel != null)
         {
             winPanel.SetActive(true);
         }
 
-        // ÔÝÍ£ÓÎÏ·
+        // ï¿½ï¿½Í£ï¿½ï¿½Ï·
         Time.timeScale = 0;
 
-        // ½ûÓÃÍæ¼ÒÊäÈë
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         GetComponent<PlayerInput>().enabled = false;
 
     }
@@ -172,10 +173,10 @@ public class JianyuanChenPlayerController : MonoBehaviour
             losePanel.SetActive(true);
         }
 
-        // ÔÝÍ£ÓÎÏ·
+        // ï¿½ï¿½Í£ï¿½ï¿½Ï·
         Time.timeScale = 0;
 
-        // ½ûÓÃÍæ¼ÒÊäÈë
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         GetComponent<PlayerInput>().enabled = false;
 
 
