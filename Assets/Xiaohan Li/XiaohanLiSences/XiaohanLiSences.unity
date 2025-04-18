@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.46169424, g: 0.5124154, b: 0.58993167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1494,6 +1494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4638d923f29a4479e856fe54ed3fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0.1
 --- !u!1 &74257408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b4e857368f6148738bb42e208a114ca, type: 3}
@@ -27210,11 +27211,6 @@ MonoBehaviour:
   mouseSensitivity: 10
   xRotation: 0
   enableMouseLook: 0
-  score: {fileID: 1738774882}
-  score1: {fileID: 0}
-  score2: {fileID: 0}
-  life: {fileID: 1984997895}
-  gravityStrength: 0.001
 --- !u!1001 &1601596582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34082,11 +34078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b76d7e374c2ec243bcdbb7f9938e8b2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.163732
+      value: 3.9755573
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b76d7e374c2ec243bcdbb7f9938e8b2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.034994
+      value: 4.143699
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b76d7e374c2ec243bcdbb7f9938e8b2, type: 3}
       propertyPath: m_LocalScale.z
@@ -34507,6 +34503,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a91005901fbc9245b9cff9f28f8be8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1939636786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487129301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11aa8658c5ee51d458bf7351f821725d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupSound: {fileID: 8300000, guid: a97a4fa04284d42319d4f6d12aa653d0, type: 3}
 --- !u!1 &1941231685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ca9d32739fe9a445887120c3b52b579, type: 3}
