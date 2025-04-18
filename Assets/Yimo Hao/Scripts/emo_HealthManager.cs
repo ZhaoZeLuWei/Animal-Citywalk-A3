@@ -12,6 +12,8 @@ public class emo_HealthManager : MonoBehaviour
     public TMP_Text otherPanelHealthText;
     public GameObject currentPanel;
     public GameObject gameOverPanel;
+    public AudioSource LoseSound;
+    
 
     private void Awake()
     {
@@ -35,12 +37,14 @@ public class emo_HealthManager : MonoBehaviour
     {
         if (healthText != null)
         {
+
             healthText.text = ": " + currentHealth;
         }
 
 
         if (otherPanelHealthText != null)
         {
+            
             otherPanelHealthText.text = "" + currentHealth;
         }
     }
@@ -50,6 +54,7 @@ public class emo_HealthManager : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+
             currentHealth = 0;
             GameOver();
         }
@@ -58,6 +63,7 @@ public class emo_HealthManager : MonoBehaviour
 
     private void GameOver()
     {
+        LoseSound.Play();
         currentPanel.SetActive(false);
         gameOverPanel.SetActive(true);
     }
