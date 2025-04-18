@@ -183,8 +183,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // 移除协程相关代码
-    // private IEnumerator WaitForMusicCompletion(float duration) { ... }
+
 
     // 重新开始BGM（手动恢复）
     public void RestartBGM()
