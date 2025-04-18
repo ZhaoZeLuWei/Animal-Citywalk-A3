@@ -13,6 +13,8 @@ public class Zewei_HealthManager : MonoBehaviour
     public GameObject currentPanel;
     public GameObject gameOverPanel;
 
+    public AudioSource loseSound;
+
     private void Awake()
     {
         if (Instance == null)
@@ -58,8 +60,10 @@ public class Zewei_HealthManager : MonoBehaviour
 
     private void GameOver()
     {
+        loseSound.Play();
         currentPanel.SetActive(false);
         gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 }
 
