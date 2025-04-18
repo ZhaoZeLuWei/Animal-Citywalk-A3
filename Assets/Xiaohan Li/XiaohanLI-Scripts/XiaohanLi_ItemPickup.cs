@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class XiaohanLi_ItemPickup : MonoBehaviour
 {
-    public static event System.Action OnItemPickedUp;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            XiaohanLi_ScoreManager.Instance.AddScore(1); 
+            Debug.Log("Player picked up an item.");
+            XiaohanLi_ScoreManager.Instance.AddScore(1);
+
+            XiaohanLi_AudioManager1.Instance.PlayPickupSound();
+
             Destroy(gameObject);
         }
     }

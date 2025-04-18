@@ -6,7 +6,9 @@ public class XiaohanLi_Player : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            XiaohanLi_HealthManager.Instance.TakeDamage(1); 
+            XiaohanLi_HealthManager.Instance.TakeDamage(1);
+
+            XiaohanLi_AudioManager2.Instance.PlayHurtSound();
         }
     }
 }
