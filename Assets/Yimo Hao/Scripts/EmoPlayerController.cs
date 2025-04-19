@@ -5,6 +5,7 @@ using TMPro;
 [RequireComponent(typeof(Rigidbody))]
 public class EmoPlayerController : MonoBehaviour
 {
+    public AudioSource getCoin;
     [Header("Movement Settings")]
     private Rigidbody rb;
     private Vector2 input;
@@ -30,6 +31,7 @@ public class EmoPlayerController : MonoBehaviour
     [Header("Physics Settings")]
     public float gravityStrength = -9.81f;
 
+    
     void Start()
     {
         Time.timeScale = 1;
@@ -133,6 +135,7 @@ public class EmoPlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
+            getCoin.Play();
             other.gameObject.SetActive(false);
             scoreNumber += 1;
             score.text = scoreNumber.ToString();
