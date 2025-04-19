@@ -60,6 +60,10 @@ public class XiaohanLi_HealthManager : MonoBehaviour
     {
         currentPanel.SetActive(false);
         gameOverPanel.SetActive(true);
+        if (XiaohanLi_AudioManager3.Instance != null)
+        {
+            XiaohanLi_AudioManager3.Instance.PlayGameOverSound();
+        }
     }
 }
 
