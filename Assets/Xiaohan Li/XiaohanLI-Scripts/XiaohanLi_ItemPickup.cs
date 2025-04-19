@@ -6,7 +6,11 @@ public class XiaohanLi_ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            XiaohanLi_ScoreManager.Instance.AddScore(1); 
+            Debug.Log("Player picked up an item.");
+            XiaohanLi_ScoreManager.Instance.AddScore(1);
+
+            XiaohanLi_AudioManager1.Instance.PlayPickupSound();
+
             Destroy(gameObject);
         }
     }
