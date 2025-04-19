@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Xiaohan_PlayerController : MonoBehaviour
@@ -17,18 +16,8 @@ public class Xiaohan_PlayerController : MonoBehaviour
     [SerializeField] private float xRotation = 0f;
     public bool enableMouseLook = true;
 
-    [Header("UI Settings")]
-    public TextMeshProUGUI score;
-    public TextMeshProUGUI score1;
-    public TextMeshProUGUI score2;
-    public TextMeshProUGUI life;
-    private int scoreNumber;
-    private int score1Number;
-    private int score2Number;
-    private int lifeNumber;
-
-    [Header("Physics Settings")]
-    public float gravityStrength = -9.81f;
+    [Header("Height Settings")]
+    private float initialHeight; // 记录初始高度
 
     void Start()
     {
@@ -36,19 +25,13 @@ public class Xiaohan_PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        scoreNumber = 0;
-        score.text = scoreNumber.ToString();
-        score1Number = -1;
-        score1.text = score1Number.ToString();
-        score2Number = 0;
-        score2.text = score2Number.ToString();
-        lifeNumber = 3;
-        life.text = lifeNumber.ToString();
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         if (cameraPivot == null) cameraPivot = transform;
+
+        // 记录角色的初始高度
+        initialHeight = transform.position.y;
     }
 
     void OnMove(InputValue value)
@@ -95,12 +78,16 @@ public class Xiaohan_PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         HandleMovement();
-        ApplyGravity();
+
+        // 锁定角色的 Y 轴位置到初始高度
+        Vector3 newPosition = transform.position;
+        newPosition.y = initialHeight;
+        transform.position = newPosition;
     }
 
     void HandleMovement()
     {
-        // ��ȡ������򣨺���Y�ᣩ
+        // 获取摄像机的前向和右向方向
         Vector3 forward = cameraPivot.forward;
         Vector3 right = cameraPivot.right;
         forward.y = 0;
@@ -108,14 +95,14 @@ public class Xiaohan_PlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        // �����ƶ�����
+        // 计算移动方向
         Vector3 moveDirection = forward * input.y + right * input.x;
 
-        // �ƶ�
+        // 设置目标速度
         Vector3 targetVelocity = moveDirection * speed;
-        rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
+        rb.velocity = new Vector3(targetVelocity.x, 0, targetVelocity.z); // Y 轴速度始终为 0
 
-        // ֻ���������Ҳ�������ƶ�ʱ��ת��ɫ
+        // 如果玩家正在移动，则调整角色朝向
         if (moveDirection.magnitude > 0.1f && input.y >= 0)
         {
             float targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
@@ -124,31 +111,14 @@ public class Xiaohan_PlayerController : MonoBehaviour
         }
     }
 
-    void ApplyGravity()
-    {
-        rb.AddForce(new Vector3(0, gravityStrength, 0), ForceMode.Acceleration);
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("coin"))
         {
-            other.gameObject.SetActive(false);
-            scoreNumber += 1;
-            score.text = scoreNumber.ToString();
-            score1Number += 1;
-            score1.text = score1Number.ToString();
-            score2Number += 1;
-            score2.text = score2Number.ToString();
-        }
-        if (other.gameObject.CompareTag("car"))
-        {
-            lifeNumber -= 1;
-            life.text = lifeNumber.ToString();
+            other.gameObject.SetActive(false); // 拾取金币后隐藏金币
         }
     }
 }
-
 
 
 

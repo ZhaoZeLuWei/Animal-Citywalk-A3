@@ -6,6 +6,7 @@ public class Zewei_ItemPickup10 : MonoBehaviour
 {
     public GameObject currentPanel; 
     public GameObject victoryPanel; 
+    public AudioSource winSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,6 +31,8 @@ public class Zewei_ItemPickup10 : MonoBehaviour
         if (victoryPanel != null)
         {
             victoryPanel.SetActive(true); 
+            winSound.Play();
+            Time.timeScale = 0;
         }
     }
 }

@@ -6,6 +6,7 @@ public class emo_ItemPickup10 : MonoBehaviour
 {
     public GameObject currentPanel; 
     public GameObject victoryPanel; 
+    public AudioSource WinSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +30,7 @@ public class emo_ItemPickup10 : MonoBehaviour
     {
         if (victoryPanel != null)
         {
+            WinSound.Play();
             victoryPanel.SetActive(true); 
         }
     }
