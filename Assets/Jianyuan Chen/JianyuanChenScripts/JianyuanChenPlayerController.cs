@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;//
-using UnityEngine.SceneManagement; // �����������ռ�����
+using UnityEngine.SceneManagement; // 
 
 [RequireComponent(typeof(Rigidbody))]
 public class JianyuanChenPlayerController : MonoBehaviour
@@ -12,24 +12,35 @@ public class JianyuanChenPlayerController : MonoBehaviour
     private bool isGrounded;//1
 
 
-    // ���������������
+    // 音效相关变量
+    [Header("Audio Settings")]
+    public AudioClip coinSound; // Coin 的音效
+    public AudioClip stopSignSound; // StopSign 的音效
+    private AudioSource audioSource; // AudioSource 组件
+
+
+   //Public AudioSource bgmAudioSource; // 在检查器中拖入 BGM 的 AudioSource
+    //public AudioClip winMusic; // 胜利音乐
+   // public AudioClip loseMusic; // 失败音乐
+
+
     [Header("UI Settings")]
-    public GameObject losePanel; // ��Inspector�������������
-    public GameObject gameInfoPanel; // ��Ϸ��Ϣ��壨��Inspector�����룩
-    public TextMeshProUGUI[] countTexts; // ʹ������洢����ı����
-    public GameObject winPanel;  // ��Inspector������ʤ�����
+    public GameObject losePanel; // 
+    public GameObject gameInfoPanel; // 
+    public TextMeshProUGUI[] countTexts; //
+    public GameObject winPanel;  // 
 
 
     [Header("Health Settings")]
     public int maxHealth = 3;
-    public TextMeshProUGUI[] healthTexts; // ����Ѫ����ʾ�ı�
+    public TextMeshProUGUI[] healthTexts; // 
     private int health;
 
 
     [Header("Movement Settings")]
     public float speed = 5f;
     [Range(5f, 170f)] public float jumpForce = 12f;
-    public float gravityMultiplier = 2f; // ����������ǿϵ��
+    public float gravityMultiplier = 2f; // 
 
 
 
@@ -39,23 +50,27 @@ public class JianyuanChenPlayerController : MonoBehaviour
     public Vector3 groundCheckOffset = new Vector3(0, -0.5f, 0);
 
 
-
-    private float initialGravity; // ��¼��ʼ����ֵ
+    private float initialGravity; //
 
     void Start()
     {
         Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true; // ����������ת��
-        initialGravity = Physics.gravity.y; // �����ʼ����ֵ
+        rb.freezeRotation = true; // 
+        initialGravity = Physics.gravity.y; //
         count = 0;
         SetCountText();//
         health = maxHealth;
-        SetHealthText(); // ��ʼ��Ѫ����ʾ
-                         // ȷ����ʼ״̬��ȷ
+        SetHealthText(); // 
         if (losePanel != null) losePanel.SetActive(false);
         if (gameInfoPanel != null) gameInfoPanel.SetActive(true);
         if (winPanel != null) winPanel.SetActive(false);
+
+        // 初始化 AudioSource
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false; // 禁止自动播放
+
+
     }
 
     void OnMove(InputValue value)
@@ -68,7 +83,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
-            // ʹ���ٶ��޸�ȷ���߶�һ����
+            // 
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
     }
@@ -77,7 +92,7 @@ public class JianyuanChenPlayerController : MonoBehaviour
         foreach (var text in countTexts)
         {
             if (text != null)
-                text.text = $": {count}"; // ͳһ��ʽ
+                text.text = $": {count}"; // 
         }
     }
 
@@ -86,16 +101,16 @@ public class JianyuanChenPlayerController : MonoBehaviour
         foreach (var text in healthTexts)
         {
             if (text != null)
-                text.text = $": {health}"; // ͳһ��ʽ
+                text.text = $": {health}"; // 
         }
     }
 
     private void FixedUpdate()
     {
-        // ��ǿ����Ч��
+
         rb.AddForce(Vector3.up * initialGravity * (gravityMultiplier - 1), ForceMode.Acceleration);
 
-        // �Ľ��ĵ�����
+
         isGrounded = Physics.CheckSphere(
             transform.position + groundCheckOffset,
             groundCheckRadius,
@@ -103,7 +118,6 @@ public class JianyuanChenPlayerController : MonoBehaviour
         );
 
 
-        // ʹ���ٶȿ���+����ƽ��
         Vector3 targetVelocity = new Vector3(input.x, 0, input.y) * speed;
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.5f);
     }
@@ -114,13 +128,23 @@ public class JianyuanChenPlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+            // 播放 Coin 音效
+            if (coinSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(coinSound);
+            }
         }
-        else if (other.gameObject.CompareTag("StopSign")) // ������Ѫ�ж�
+        else if (other.gameObject.CompareTag("StopSign")) //
         {
             TakeDamage(1);
-            other.gameObject.SetActive(false); // ��ѡ��ʹֹͣ��־��ʧ
+            other.gameObject.SetActive(false); // 
+                                               // 播放 StopSign 音效
+            if (stopSignSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(stopSignSound);
+            }
         }
-        else if (other.CompareTag("Win")) // ����ʤ�������ж�
+        else if (other.CompareTag("Win")) // 
         {
             Victory();
         }
@@ -128,23 +152,25 @@ public class JianyuanChenPlayerController : MonoBehaviour
     void Victory()
     {
         Debug.Log("Victory!");
+        // 暂停原BGM并播放胜利音乐
+        AudioManager.Instance.PauseBGM();
+        AudioManager.Instance.PlayWinMusic();
 
-        // ������Ϸ��Ϣ����
+
+
         if (gameInfoPanel != null)
         {
             gameInfoPanel.SetActive(false);
         }
 
-        // ��ʾʤ�����
         if (winPanel != null)
         {
             winPanel.SetActive(true);
         }
 
-        // ��ͣ��Ϸ
         Time.timeScale = 0;
 
-        // �����������
+
         GetComponent<PlayerInput>().enabled = false;
 
     }
@@ -164,6 +190,9 @@ public class JianyuanChenPlayerController : MonoBehaviour
     {
 
         Debug.Log("Game Over!");
+        // 暂停原BGM并播放失败音乐
+        AudioManager.Instance.PauseBGM();
+        AudioManager.Instance.PlayLoseMusic();
         if (gameInfoPanel != null)
         {
             gameInfoPanel.SetActive(false);
@@ -173,10 +202,9 @@ public class JianyuanChenPlayerController : MonoBehaviour
             losePanel.SetActive(true);
         }
 
-        // ��ͣ��Ϸ
+
         Time.timeScale = 0;
 
-        // �����������
         GetComponent<PlayerInput>().enabled = false;
 
 
