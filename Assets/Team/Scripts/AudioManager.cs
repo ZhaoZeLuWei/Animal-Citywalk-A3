@@ -4,71 +4,71 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    // µ¥ÀýÊµÀý
+    // ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     public static AudioManager Instance { get; private set; }
 
-    // ÒôÆµÔ´Ïà¹Ø
-    public AudioSource bgmSource; // BGMµÄAudioSource
-    public AudioClip winMusic; // Ê¤ÀûÒôÀÖ
-    public AudioClip loseMusic; // Ê§°ÜÒôÀÖ
+    // ï¿½ï¿½ÆµÔ´ï¿½ï¿½ï¿½
+    public AudioSource bgmSource; // BGMï¿½ï¿½AudioSource
+    public AudioClip winMusic; // Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public AudioClip loseMusic; // Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    // ÒôÁ¿¿ØÖÆ
-    public float masterVolume = 1f;
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float masterVolume = 0.4f;
 
-    // ¾²Òô×´Ì¬
+    // ï¿½ï¿½ï¿½ï¿½×´Ì¬
     private bool isMuted = false;
 
-    // Ìí¼Ó¹«¹²ÊôÐÔÀ´±©Â¶isMuted
+    // ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶isMuted
     public bool IsMuted
     {
         get { return isMuted; }
     }
 
-    // ±£´æÔ­Ê¼BGMµÄclip
+    // ï¿½ï¿½ï¿½ï¿½Ô­Ê¼BGMï¿½ï¿½clip
     private AudioClip originalBGM;
 
     void Awake()
     {
-        // È·±£Ö»ÓÐÒ»¸öÊµÀý´æÔÚ
+        // È·ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // ¿ç³¡¾°²»Ïú»Ù
+        DontDestroyOnLoad(gameObject); // ï¿½ç³¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        // ³õÊ¼»¯BGM£¨Èç¹ûÅäÖÃÁËclip£©
+        // ï¿½ï¿½Ê¼ï¿½ï¿½BGMï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½clipï¿½ï¿½
         if (bgmSource != null && bgmSource.clip != null)
         {
-            originalBGM = bgmSource.clip; // ±£´æÔ­Ê¼BGM
+            originalBGM = bgmSource.clip; // ï¿½ï¿½ï¿½ï¿½Ô­Ê¼BGM
             bgmSource.loop = true;
             bgmSource.volume = masterVolume;
             bgmSource.Play();
         }
 
-        // ¼ÓÔØ±£´æµÄÒôÁ¿ÉèÖÃ
+        // ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         LoadVolumeSettings();
         LoadMuteState();
     }
 
-    // ×¢²á³¡¾°¼ÓÔØÍê³ÉÊÂ¼þ
+    // ×¢ï¿½á³¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // È¡Ïû×¢²áÊÂ¼þ£¨·ÀÖ¹ÄÚ´æÐ¹Â©£©
+    // È¡ï¿½ï¿½×¢ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½Ú´ï¿½Ð¹Â©ï¿½ï¿½
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // ³¡¾°¼ÓÔØÍê³ÉÊ±´¥·¢
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // ÔÚ´Ë´¦Ìí¼ÓÐèÒªË¢ÐÂµÄ²Ù×÷
-        // ÀýÈç£ºÖØÐÂ¼ÓÔØBGM»òÓ¦ÓÃÒôÁ¿ÉèÖÃ
+        // ï¿½Ú´Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªË¢ï¿½ÂµÄ²ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ç£ºï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½BGMï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (bgmSource != null && originalBGM != null)
         {
             bgmSource.Stop();
@@ -78,36 +78,36 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // ¾²ÒôÏà¹Ø·½·¨
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
     public void MuteAll()
     {
         isMuted = true;
-        AudioListener.pause = true; // È«¾ÖÔÝÍ£ËùÓÐÒôÆµ
+        AudioListener.pause = true; // È«ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
         SaveMuteState();
     }
 
     public void UnmuteAll()
     {
         isMuted = false;
-        AudioListener.pause = false; // »Ö¸´ËùÓÐÒôÆµ
+        AudioListener.pause = false; // ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
         SaveMuteState();
     }
 
-    // ±£´æ¾²Òô×´Ì¬µ½PlayerPrefs
+    // ï¿½ï¿½ï¿½æ¾²ï¿½ï¿½×´Ì¬ï¿½ï¿½PlayerPrefs
     private void SaveMuteState()
     {
         PlayerPrefs.SetInt("IsMuted", isMuted ? 1 : 0);
         PlayerPrefs.Save();
     }
 
-    // ¼ÓÔØ¾²Òô×´Ì¬
+    // ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½×´Ì¬
     private void LoadMuteState()
     {
         isMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
-        AudioListener.pause = isMuted; // ³õÊ¼»¯Ê±Ó¦ÓÃ¾²Òô×´Ì¬
+        AudioListener.pause = isMuted; // ï¿½ï¿½Ê¼ï¿½ï¿½Ê±Ó¦ï¿½Ã¾ï¿½ï¿½ï¿½×´Ì¬
     }
 
-    // ÒôÁ¿¹ÜÀí
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void SaveVolumeSettings()
     {
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
@@ -116,8 +116,8 @@ public class AudioManager : MonoBehaviour
 
     public void LoadVolumeSettings()
     {
-        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
-        UpdateAllAudioSources(); // Ó¦ÓÃÒôÁ¿µ½ËùÓÐÒôÆµÔ´
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.4f);
+        UpdateAllAudioSources(); // Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆµÔ´
     }
 
     public void UpdateAllAudioSources()
@@ -129,11 +129,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // BGM¿ØÖÆ
+    // BGMï¿½ï¿½ï¿½ï¿½
     public void PlayBGM(AudioClip clip)
     {
         if (bgmSource == null) bgmSource = GetComponent<AudioSource>();
-        originalBGM = clip; // ¸üÐÂÔ­Ê¼BGM
+        originalBGM = clip; // ï¿½ï¿½ï¿½ï¿½Ô­Ê¼BGM
         bgmSource.clip = clip;
         bgmSource.loop = true;
         bgmSource.volume = masterVolume;
@@ -152,19 +152,19 @@ public class AudioManager : MonoBehaviour
             bgmSource.UnPause();
     }
 
-    // Ê¤Àû/Ê§°ÜÒôÀÖ£¨ÎÞÐèµÈ´ý»Ö¸´£©
+    // Ê¤ï¿½ï¿½/Ê§ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½
     public void PlayWinMusic()
     {
         if (bgmSource != null)
         {
-            // ±£´æµ±Ç°BGMµÄclip£¨Èç¹ûÐèÒªºóÐø»Ö¸´£©
+            // ï¿½ï¿½ï¿½æµ±Ç°BGMï¿½ï¿½clipï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½
             originalBGM = bgmSource.clip;
             bgmSource.Stop();
             bgmSource.clip = winMusic;
             bgmSource.loop = false;
-            bgmSource.volume = masterVolume; // Ó¦ÓÃÖ÷ÒôÁ¿
+            bgmSource.volume = masterVolume; // Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             bgmSource.Play();
-            // ²»ÔÙµÈ´ý»Ö¸´£¬ÒôÀÖ½áÊøºó»áÍ£Ö¹
+            // ï¿½ï¿½ï¿½ÙµÈ´ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹
         }
     }
 
@@ -172,28 +172,28 @@ public class AudioManager : MonoBehaviour
     {
         if (bgmSource != null)
         {
-            // ±£´æµ±Ç°BGMµÄclip£¨Èç¹ûÐèÒªºóÐø»Ö¸´£©
+            // ï¿½ï¿½ï¿½æµ±Ç°BGMï¿½ï¿½clipï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½
             originalBGM = bgmSource.clip;
             bgmSource.Stop();
             bgmSource.clip = loseMusic;
             bgmSource.loop = false;
-            bgmSource.volume = masterVolume; // Ó¦ÓÃÖ÷ÒôÁ¿
+            bgmSource.volume = masterVolume; // Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             bgmSource.Play();
-            // ²»ÔÙµÈ´ý»Ö¸´£¬ÒôÀÖ½áÊøºó»áÍ£Ö¹
+            // ï¿½ï¿½ï¿½ÙµÈ´ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹
         }
     }
 
 
 
-    // ÖØÐÂ¿ªÊ¼BGM£¨ÊÖ¶¯»Ö¸´£©
+    // ï¿½ï¿½ï¿½Â¿ï¿½Ê¼BGMï¿½ï¿½ï¿½Ö¶ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½
     public void RestartBGM()
     {
         if (bgmSource != null && originalBGM != null)
         {
-            bgmSource.Stop(); // Í£Ö¹µ±Ç°²¥·ÅµÄÒôÆµ
+            bgmSource.Stop(); // Í£Ö¹ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Åµï¿½ï¿½ï¿½Æµ
             bgmSource.clip = originalBGM;
             bgmSource.loop = true;
-            bgmSource.Play(); // ÖØÐÂ¿ªÊ¼²¥·Å
+            bgmSource.Play(); // ï¿½ï¿½ï¿½Â¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
         }
     }
 }
