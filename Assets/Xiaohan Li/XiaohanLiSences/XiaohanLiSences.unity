@@ -369,7 +369,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL
+  m_text: LEVEL 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ed540e02aa034624a5088a52b779c35, type: 2}
   m_sharedMaterial: {fileID: -4860099185446908152, guid: 9ed540e02aa034624a5088a52b779c35, type: 2}
@@ -2784,7 +2784,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8621,7 +8621,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9660,7 +9660,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10460,7 +10460,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14173,7 +14173,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15015,7 +15015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03935ff1f451b2f4c9bb64707570144a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1858906276}
+  clickSound: {fileID: 8300000, guid: 2bb4fc6806a9347178b4bc573bc30d72, type: 3}
 --- !u!1 &838893099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b704d74050a14837b487dc41fc830a8, type: 3}
@@ -20573,7 +20573,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21358,7 +21358,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30190,7 +30190,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30501,7 +30501,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 838130038}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

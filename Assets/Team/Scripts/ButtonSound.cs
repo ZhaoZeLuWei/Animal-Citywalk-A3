@@ -3,20 +3,26 @@ using UnityEngine.UI;
 
 public class ButtonSound : MonoBehaviour
 {
-    public AudioSource audioSource; // 假设这是第10行的变量
+    public AudioClip clickSound; // 点击音效
+    private AudioSource audioSource;
 
     void Start()
     {
-        if (audioSource != null)
+        // 获取或创建AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
         {
-            audioSource.Play(); // 安全调用
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
-        else
+    }
+
+    public void PlayClickSound()
+    {
+        if (clickSound != null && audioSource != null)
         {
-            Debug.LogError("AudioSource未正确赋值！"); // 提示错误
+            audioSource.PlayOneShot(clickSound); // 播放音效
         }
     }
 }
-
 
 
