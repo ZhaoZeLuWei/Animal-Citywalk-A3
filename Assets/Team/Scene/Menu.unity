@@ -12832,7 +12832,7 @@ PlayableDirector:
   m_GameObject: {fileID: 325473047}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: c2a43a8989705dc4999a9867a2e21d2f, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 3354d2772926afd40a21fe7dc668d13b, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -12842,7 +12842,7 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 8067470687195969736, guid: c2a43a8989705dc4999a9867a2e21d2f, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -1775162945944795945, guid: c2a43a8989705dc4999a9867a2e21d2f, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 325473048}
   m_ExposedReferences:
     m_References: []
@@ -28310,13 +28310,14 @@ GameObject:
   - component: {fileID: 1079313371}
   - component: {fileID: 1079313373}
   - component: {fileID: 1079313372}
+  - component: {fileID: 1079313374}
   m_Layer: 5
   m_Name: Panel5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1079313371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28377,6 +28378,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079313370}
   m_CullTransparentMesh: 1
+--- !u!320 &1079313374
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079313370}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 2b25dd6dd7228c4439116283c6a04d50, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -2295337241456170016, guid: 2b25dd6dd7228c4439116283c6a04d50, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &1080456228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32838,6 +32858,8 @@ GameObject:
   - component: {fileID: 1214523964}
   - component: {fileID: 1214523966}
   - component: {fileID: 1214523965}
+  - component: {fileID: 1214523968}
+  - component: {fileID: 1214523967}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -32885,17 +32907,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Scene design: Zewei Xia
-
-
-    Character design: Xiaohan Li
-
-
-    Layout
-    design: Jianyuan Chen
-
-
-    Interaction design: Yimo Hao'
+  m_text: "MENU\r\n\r\nPlay Pannel:Xiaohan Li\r\nSetting Pannel:Jianyuan Chen\r\nHelp
+    Pannel:Yimo Hao\r\nCredit Pannel:Yimo Hao\r\n3D Sence & Logo: Zewei Xia\r\n\r\nGAME
+    UI\r\n\r\nGame Info Pannel:Jianyuan Chen\r\nPause Pannel:Xiaohan Li\r\nWIN/LOSE
+    Pannel:Yimo Hao\r\nNavigations:Zewei Xia\r\nPM:Zewei Xia\r\n\r\nFUNCTION\r\n\r\nSound
+    Setting:Jianyuan Chen\r\nBox Collider:Jianyuan Chen\r\nScore Data Synchronization:Xiaohan
+    Li & Jianyuan Chen\r\nMerge/Pull Request Solve:Zewei Xia\r\nCamera Angle:Yimo
+    Hao\r\n\r\nRESOURCES\r\n\r\nText:https://www.dafont.com/perfect-delight-1992.font\r\nClick
+    Sound:https://pixabay.com/sound-effects/click-151673/\r\nLose Sound:https://pixabay.com/sound-effects/080047-lose-funny-retro-video-game-80925/\r\nWin
+    Sound:https://pixabay.com/sound-effects/you-win-sequence-2-183949/\r\nSlip Sound:https://pixabay.com/sound-effects/coin-collect-retro-8-bit-sound-effect-145251/\r\nCoin
+    Sound:https://pixabay.com/sound-effects/coin-recieved-230517/\r\nHurt Sound:https://pixabay.com/sound-effects/man-death-scream-186763/\r\nButton
+    :https://assetstore-fallback.unity.com/packages/2d/gui/icons/a-lot-of-useful-icons-01-126673\r\nNavi
+    & Panel:https://assetstore.unity.com/packages/tools/gui/manager-interface-mobile-game-168565\r\nPeople:https://assetstore.unity.com/packages/3d/characters/humanoids/humans/low-poly-modular-characters-267317\r\nCoin
+    & Box:https://assetstore.unity.com/packages/templates/packs/getitemeffect-185710\r\nCity:https://assetstore.unity.com/packages/3d/environments/urban/city-package-107224\r\nhttps://assetstore.unity.com/packages/3d/environments/urban/toon-city-pack-234785\r\nhttps://assetstore-fallback.unity.com/packages/3d/environments/urban/low-poly-city-assets-234586\r\nAnimal:\r\nhttps://assetstore.unity.com/packages/3d/characters/animals/quirky-series-free-animals-pack-178235\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ed540e02aa034624a5088a52b779c35, type: 2}
   m_sharedMaterial: {fileID: -4860099185446908152, guid: 9ed540e02aa034624a5088a52b779c35, type: 2}
@@ -32972,6 +32996,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214523963}
   m_CullTransparentMesh: 1
+--- !u!95 &1214523967
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214523963}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!320 &1214523968
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214523963}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: abff13cfff976964f990e56657c87174, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -6224130162312304024, guid: abff13cfff976964f990e56657c87174, type: 2}
+    value: {fileID: 1214523967}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &1216133157
 PrefabInstance:
   m_ObjectHideFlags: 0
