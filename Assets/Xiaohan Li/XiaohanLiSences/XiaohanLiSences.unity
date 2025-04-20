@@ -21027,7 +21027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 116}
+  m_AnchoredPosition: {x: 0, y: 54}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1259714412
@@ -21050,21 +21050,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game rules:
+  m_text: 'Game Rules:
 
-    There is only one goal to win, that is, to reach the
-    target score and cross the dangerous streets, and then reach the end.
+    The goal of victory is to have only one guide: follow
+    the gold standard, pierce the dangerous road, reach the treasure chest in the
+    city, and win the victory.
 
-    In
-    addition to buildings, the scene also includes pedestrians and vehicles on the
-    road. If you are accidentally hit, be careful to reduce your health.
+    A view of the buildings being removed and people
+    walking on the central road. As a result, if you reach a small obstacle, your
+    life will be lowered. When your life is over, you lose your game.
 
-    Finally,
-    in some inconspicuous corners of the city, there may be some gorgeous treasure
-    chests hidden, which can provide you with extra points.
-
-    Take your courage
-    and faith to explore this unknown city, and I wish you a happy game!'
+    When you
+    wear your bravery and believe in leaving the unknown city, congratulations and
+    have fun!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c597fc27023684021b7079c5d0eaba32, type: 2}
   m_sharedMaterial: {fileID: -119174696437816883, guid: c597fc27023684021b7079c5d0eaba32, type: 2}
