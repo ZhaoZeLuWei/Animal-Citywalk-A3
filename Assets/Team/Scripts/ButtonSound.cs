@@ -3,23 +3,26 @@ using UnityEngine.UI;
 
 public class ButtonSound : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioClip clickSound; // 点击音效
+    private AudioSource audioSource;
 
     void Start()
     {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(OnButtonClick);
+        // 获取或创建AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
-    public void OnButtonClick() 
+    public void PlayClickSound()
     {
-        if (audioSource != null)
+        if (clickSound != null && audioSource != null)
         {
-            audioSource.Play();
+            audioSource.PlayOneShot(clickSound); // 播放音效
         }
     }
 }
-
-
 
 

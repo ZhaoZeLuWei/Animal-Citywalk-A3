@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Team/Scene/Help.unity
     guid: 1e9aac4d265b08241964d5affa216bc4
   - enabled: 1
@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Jianyuan Chen/Train station.unity
     guid: a3e9f868ae878be45abf3f628e074a26
   - enabled: 1
-    path: Assets/Xiaohan Li/XiaohanLiSences.unity
+    path: Assets/Xiaohan Li/XiaohanLiSences/XiaohanLiSences.unity
     guid: 418c1ae5790168648b5e459f070ed88a
   - enabled: 1
     path: Assets/Zewei Xia/Scene/Game Scene.unity
@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Yimo Hao/Sence/emo.unity
     guid: ffb7cbb96c5fe4f78809d3631ca63bf4
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9569c10533dff894da57a33a6490aeed, type: 2}
